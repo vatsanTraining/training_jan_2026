@@ -71,6 +71,40 @@ public class UnderStoodLambda {
 			}
 		});
 		
+		
+		
+System.out.println("***** Names WITHOUT I ****");
+		
+		playerList.forEach(e -> {
+			
+			//System.out.println(testForChar.test(e.getPlayerName()));
+			
+			if(testForChar.negate().test(e.getPlayerName())) {
+				System.out.println(e);
+			}
+		});
+		
+		
+		Predicate<String> testForI = (name) -> name.contains("i");
+		
+		
+		Predicate<String> testForR = (name) -> name.contains("K");
+
+	
+		Predicate<String> combined = testForI.or(testForR);
+
+		
+		
+System.out.println("***** Names WITH I or R ****");
+		
+		playerList.forEach(e -> {
+			
+			if(combined.test(e.getPlayerName())) {
+				System.out.println(e);
+			}
+		});
+
+		
 	}
 
 }
