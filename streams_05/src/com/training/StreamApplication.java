@@ -2,12 +2,14 @@ package com.training;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import static java.util.stream.Collectors.*;
 
+import java.util.Comparator;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import com.training.model.Player;
 
@@ -32,7 +34,44 @@ public class StreamApplication {
 
 		 }
 
+	 
+	 public static List<String> getPlayerNames(Set<Player> players){
+		 
+		 return players.stream().map(e -> e.getPlayerName()).collect(toList());
+	 }
 
+    public static List<String> getPlayerNames(Set<Player> players,Predicate<Player> condition){
+		 
+    	// source.stream.intermediate1.intermediate2.terminal
+    	
+		 return players.stream().filter(condition).map(e -> e.getPlayerName()).collect(toList());
+	 }
+ 
+    
+    public static Map<String,Integer> getPlayerNamesAndJerseyNumber(Set<Player> players){
+		 
+		 return players.stream().collect(toMap(Player::getPlayerName, Player::getJerseryNumber));
+	 }
+    
+    
+    public static Player  findMaxJerseyNumber(Set<Player> players) {
+    	
+
+          Optional<Integer> min = players.stream().map(e -> e.getJerseryNumber()).min(Integer::compareTo);
+          
+          if(min.isPresent()) {
+        	  System.out.println("Min Value:=>"+ min.get());
+          }
+           
+    	
+    	Comparator<Player> comparator= Comparator.comparing(Player::getJerseryNumber);
+    	
+		 return players.stream().max(comparator).get();
+		 
+
+    }
+
+	 
 	public static void main(String[] args) {
 
 		
@@ -64,20 +103,24 @@ public class StreamApplication {
           Predicate<Player> condition2  = e -> e.getJerseryNumber()>20;
           
           usingFilter(playerList, condition2);
+          
+          System.out.println("Player Names");
+          getPlayerNames(playerList).forEach(System.out::println);;
+          
+          System.out.println("Player with Jersey Number >20");
+          getPlayerNames(playerList,condition1).forEach(System.out::println);
+          
+          
+         System.out.println(findMaxJerseyNumber(playerList).getJerseryNumber());
 		
 	}
 
 }
 
 
-//using map
 
 
-	// collect to a set
-	
-	// collect to a map
 	
 	// using flatmap
 	
-	// using max 
 	
