@@ -77,13 +77,20 @@ System.out.println("***** Names WITHOUT I ****");
 		
 		playerList.forEach(e -> {
 			
-			//System.out.println(testForChar.test(e.getPlayerName()));
 			
 			if(testForChar.negate().test(e.getPlayerName())) {
 				System.out.println(e);
 			}
 		});
 		
+		
+playerList.forEach(e -> {
+			
+			
+			if(!testForChar.test(e.getPlayerName())) {
+				System.out.println(e);
+			}
+		});
 		
 		Predicate<String> testForI = (name) -> name.contains("i");
 		
