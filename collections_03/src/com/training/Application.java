@@ -3,6 +3,7 @@ package com.training;
 import java.util.Collection;
 
 import com.training.ifaces.CrudOperation;
+import com.training.ifaces.DuplicateElementException;
 import com.training.impl.PlayerImpl;
 import com.training.model.Player;
 import com.training.services.PlayerService;
@@ -41,26 +42,32 @@ public class Application {
 		
 		Player tendulkar = new Player(101,"Tendulkar",10);
 
-		System.out.println("is Added :="+service.add(tendulkar));
+		try {
+			System.out.println("is Added :="+service.add(tendulkar));
+			Player sundar = new Player(102,"Sundar",210);
 
-		Player sundar = new Player(102,"Sundar",210);
-
-		System.out.println("is Added :="+service.add(sundar));
-
-
-			Player dravid = new Player(103,"Dravid",320);
-
-			System.out.println("is Added :="+service.add(dravid));
+			System.out.println("is Added :="+service.add(sundar));
 
 
-			Player dhoni = new Player(204,"Abijit",610);
+				Player dravid = new Player(103,"Dravid",320);
 
-			System.out.println("is Added :="+service.add(dhoni));
+				System.out.println("is Added :="+service.add(dravid));
 
-			Player kambli = new Player(402,"Kambli",120);
 
-			System.out.println("is Added :="+service.add(kambli));
-	}
+				Player dhoni = new Player(204,"Abijit",610);
+
+				System.out.println("is Added :="+service.add(dhoni));
+
+				Player kambli = new Player(402,"Kambli",120);
+
+				System.out.println("is Added :="+service.add(kambli));
+
+		} catch (DuplicateElementException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		}
 
 	protected static void displayPlayers(Collection<Player> players) {
 		

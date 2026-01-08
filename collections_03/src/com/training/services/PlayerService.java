@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import com.training.ifaces.CrudOperation;
+import com.training.ifaces.DuplicateElementException;
 import com.training.impl.PlayerImplWithSet;
 import com.training.model.Player;
 
@@ -19,7 +20,7 @@ public class PlayerService {
 	}
 	
 	
-	public boolean add(Player player) {
+	public boolean add(Player player) throws DuplicateElementException{
 		
 		return this.crud.add(player);
 	}
