@@ -7,6 +7,15 @@ public class Player  {
 	private String playerName;
 	private int jerseryNumber;
 	
+	private Address address;
+	
+	
+	public Address getAddress() {
+		return address;
+	}
+	public void setAddress(Address address) {
+		this.address = address;
+	}
 	public Player() {
 		super();
 	}
@@ -36,7 +45,8 @@ public class Player  {
 	}
 	@Override
 	public String toString() {
-		return this.playerName +"," +this.jerseryNumber;
+		return "Player [playerId=" + playerId + ", playerName=" + playerName + ", jerseryNumber=" + jerseryNumber
+				+ ", address=" + address + "]";
 	}
 	
 	

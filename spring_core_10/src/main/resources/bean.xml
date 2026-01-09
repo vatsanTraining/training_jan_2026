@@ -10,6 +10,17 @@
 <property name="playerId" value="1020"></property>
 <property name="playerName" value="Sachin"></property>
 <property name="jerseryNumber" value="10"></property>
+<property name="address" ref="addOne"></property>
+
+
+</bean>
+
+
+<bean id="addOne" class="com.training.model.Address">
+
+<property name="addressLineOne" value="Chembur"></property>
+<property name="city" value="Mumbai"></property>
+<property name="pincode" value="400002"></property>
 
 
 </bean>
