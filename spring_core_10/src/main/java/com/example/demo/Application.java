@@ -5,6 +5,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.training.model.Player;
+import com.training.model.Team;
 
 public class Application {
 
@@ -17,9 +18,16 @@ public class Application {
 		  Player sachin = ctx.getBean(Player.class);
 		  
 		  System.out.println(sachin);
+	
+	  Team team = ctx.getBean(Team.class);
 		  
+		  System.out.println(team);
+
 		  System.out.println(sachin.getAwards());
 		  ((ConfigurableApplicationContext)ctx).close();
+		  
+		  
+			  
 		  
 //		  Player sachin = new Player();
 //		  sachin.setPlayerId(1020);
@@ -34,5 +42,3 @@ public class Application {
 }
 
 
-// collection
-// autowire

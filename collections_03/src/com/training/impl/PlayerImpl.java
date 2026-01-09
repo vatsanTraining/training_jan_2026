@@ -22,12 +22,13 @@ public class PlayerImpl implements CrudOperation<Player> {
 	@Override
 	public boolean add(Player obj) throws DuplicateElementException {
 		
-		if(true) {
-			 throw new DuplicateElementException("Element with given id already Exisit");
-
-		}  
-		
-		return this.players.add(obj);
+        for (Player existingPlayer : this.players) {
+            if (existingPlayer.getPlayerId()==obj.getPlayerId()) { 
+                throw new DuplicateElementException("Element with given id already Exists");
+            }
+        }
+        
+        return this.players.add(obj);
 		
 	  
 	}   
