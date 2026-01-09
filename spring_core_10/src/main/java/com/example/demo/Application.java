@@ -18,12 +18,21 @@ public class Application {
 		  
 		  System.out.println(sachin);
 		  
+		  System.out.println(sachin.getAwards());
 		  ((ConfigurableApplicationContext)ctx).close();
 		  
 //		  Player sachin = new Player();
 //		  sachin.setPlayerId(1020);
 //		  sachin.setJerseryNumber(10);
 //		  sachin.setPlayerName("Sachin");
+		  
+		  // List<String> awards = new ArrayList<>();
+		  //awards.add("");
+		  // saching.setAwards(awards)
 	}
 
 }
+
+
+// collection
+// autowire

@@ -5,23 +5,43 @@
        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-<bean id="sachin" class="com.training.model.Player">
+<bean id="sachin" class="com.training.model.Player" lazy-init="true">
 
 <property name="playerId" value="1020"></property>
 <property name="playerName" value="Sachin"></property>
 <property name="jerseryNumber" value="10"></property>
-<property name="address" ref="addOne"></property>
+<property name="address" ref="addTwo"></property>
+<property name="awards">
+
+<list>
+<value>Arjuna</value>
+<value>padma vibushan</value>
+<value>khel ratna</value>
+
+</list>
+</property>
 
 
 </bean>
 
+<!-- Setter DI -->
 
 <bean id="addOne" class="com.training.model.Address">
 
 <property name="addressLineOne" value="Chembur"></property>
 <property name="city" value="Mumbai"></property>
 <property name="pincode" value="400002"></property>
+</bean>
 
+<!-- Constructor DI -->
+
+<bean id="addTwo" class="com.training.model.Address">
+
+<constructor-arg index="0" value="Bandra"/>
+<constructor-arg index="1" value="Thane"/>
+<constructor-arg index="2" value="400022"/>
 
 </bean>
+
+
 </beans>

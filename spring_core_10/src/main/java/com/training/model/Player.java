@@ -1,5 +1,7 @@
 package com.training.model;
 
+import java.util.List;
+
 public class Player  {
 
 	
@@ -9,7 +11,16 @@ public class Player  {
 	
 	private Address address;
 	
+	private List<String> awards;
 	
+	
+	
+	public List<String> getAwards() {
+		return awards;
+	}
+	public void setAwards(List<String> awards) {
+		this.awards = awards;
+	}
 	public Address getAddress() {
 		return address;
 	}
@@ -18,6 +29,8 @@ public class Player  {
 	}
 	public Player() {
 		super();
+		
+		System.out.println("==== Constructor Called========");
 	}
 	public Player(int playerId, String playerName, int jerseryNumber) {
 		super();
