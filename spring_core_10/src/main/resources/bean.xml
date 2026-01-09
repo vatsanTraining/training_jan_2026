@@ -9,7 +9,7 @@
 
 <property name="playerId" value="1020"></property>
 <property name="playerName" value="Sachin"></property>
-<property name="jerseyNumber" value="10"></property>
+<property name="jerseryNumber" value="10"></property>
 
 
 </bean>
