@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: spring_boot_core_12
+  config:
+    activate:
+      on-profile:
+      - dev
+
+server:
+  port: 4040
+
+logging:
+  level:
+    '[org.springframework.boot]': trace
+
+com:
+  example:
+   author: devloper dinesh		
+---
+
+spring:
+  config:
+    activate:
+      on-profile:
+      - test
+server:
+  port: 8080
+
+logging:
+  level:
+    '[org.springframework.boot]': info
+
+com:
+  example:
+    author: tester tom		
