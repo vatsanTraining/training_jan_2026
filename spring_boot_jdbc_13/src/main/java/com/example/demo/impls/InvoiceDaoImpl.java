@@ -24,8 +24,12 @@ public class InvoiceDaoImpl implements MyDao<Invoice> {
 
 	@Override
 	public boolean add(Invoice t) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		String sql ="INSERT INTO INVOICE(invoiceNumber,customerName,invoiceDate,amount) values(?,?,?,?)";
+		
+		
+		return this.template.update(sql,t.invoiceNumber(),t.customerName(),t.invoiceDate(),t.amount())==0?true:false;
+		
 	}
 
 	@Override
@@ -48,8 +52,11 @@ public class InvoiceDaoImpl implements MyDao<Invoice> {
 
 	@Override
 	public Invoice findById(int id) throws RuntimeException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return this.template.queryForObject(
+				"select * from invoice where invoiceNumber=?",rowMapper(),id);
+
+		
 	}
 
 	

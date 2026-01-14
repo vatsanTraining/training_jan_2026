@@ -24,4 +24,9 @@ public class InvoiceService {
 		return this.dao.findAll();
 	}
 	
+	public Invoice findByInvoiceNumber(int invoiceNumber) {
+		
+		return this.dao.findById(invoiceNumber);
+		
+	}
 }

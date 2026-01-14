@@ -2,7 +2,7 @@ spring:
   application:
     name: spring_boot_jdbc_13
   datasource:
-    url: jdbc:h2:file:~/trainDb
+    url: jdbc:h2:file:~/trainDb   
     username: sa
     password: ''
     driver-class-name: org.h2.Driver

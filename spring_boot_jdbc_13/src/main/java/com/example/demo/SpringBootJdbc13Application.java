@@ -18,6 +18,8 @@ InvoiceService service =	ctx.getBean(InvoiceService.class);
 
   service.findAll().forEach(System.out::println);
 
+  System.out.println(service.findByInvoiceNumber(103));
+  
   ctx.close();
   
 	}
