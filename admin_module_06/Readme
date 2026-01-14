@@ -5,3 +5,7 @@ select pom in packaging
 
 create a maven module give a name 
 and in parent module choose the project created earlier
+
+
+
+
