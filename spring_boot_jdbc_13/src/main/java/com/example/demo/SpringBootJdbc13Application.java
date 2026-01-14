@@ -4,7 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
-import com.example.services.InvoiceService;
+import com.example.demo.services.InvoiceService;
+
 
 @SpringBootApplication
 public class SpringBootJdbc13Application {
@@ -17,6 +18,7 @@ InvoiceService service =	ctx.getBean(InvoiceService.class);
 
   service.findAll().forEach(System.out::println);
 
+  ctx.close();
   
 	}
 

@@ -1,4 +1,4 @@
-package com.example.ifaces;
+package com.example.demo.ifaces;
 
 import java.util.List;
 

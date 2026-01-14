@@ -1,11 +1,11 @@
-package com.example.services;
+package com.example.demo.services;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dto.Invoice;
-import com.example.ifaces.MyDao;
+import com.example.demo.ifaces.MyDao;
 
 @Service
 public class InvoiceService {
