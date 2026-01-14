@@ -28,10 +28,9 @@ public class InvoiceDaoImpl implements MyDao<Invoice> {
 		String sql ="INSERT INTO INVOICE(invoiceNumber,customerName,invoiceDate,amount) values(?,?,?,?)";
 		
 		
-		return this.template.update(sql,t.invoiceNumber(),t.customerName(),t.invoiceDate(),t.amount())==0?true:false;
+		return this.template.update(sql,t.invoiceNumber(),t.customerName(),t.invoiceDate(),t.amount())==1?true:false;
 		
 	}
-
 	@Override
 	public List<Invoice> findAll() {
 		
@@ -40,16 +39,6 @@ public class InvoiceDaoImpl implements MyDao<Invoice> {
 			return  template.query(sql, rowMapper());
 			
 	}
-
-	private RowMapper<Invoice> rowMapper() {
-
-		
-		return (rs,rowNum) -> new Invoice(rs.getInt("invoiceNumber"),
-				  rs.getString("customerName"),
-				  rs.getDate("invoiceDate").toLocalDate(),
-				  rs.getDouble("amount"));
-	}
-
 	@Override
 	public Invoice findById(int id) throws RuntimeException {
 		
@@ -58,6 +47,14 @@ public class InvoiceDaoImpl implements MyDao<Invoice> {
 
 		
 	}
+	private RowMapper<Invoice> rowMapper() {
+
+		return (rs,rowNum) -> new Invoice(rs.getInt("invoiceNumber"),
+				  rs.getString("customerName"),
+				  rs.getDate("invoiceDate").toLocalDate(),
+				  rs.getDouble("amount"));
+	}
+
 
 	
 	

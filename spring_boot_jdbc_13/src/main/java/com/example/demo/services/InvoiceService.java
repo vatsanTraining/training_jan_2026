@@ -18,9 +18,11 @@ public class InvoiceService {
 		this.dao = dao;
 	}
 	
+	public boolean add(Invoice inv) {
+		return this.dao.add(inv);
+	}
 	
 	public List<Invoice> findAll(){
-		
 		return this.dao.findAll();
 	}
 	

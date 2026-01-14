@@ -1,9 +1,12 @@
 package com.example.demo;
 
+import java.time.LocalDate;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import com.example.demo.dto.Invoice;
 import com.example.demo.services.InvoiceService;
 
 
@@ -16,9 +19,13 @@ public class SpringBootJdbc13Application {
 	
 InvoiceService service =	ctx.getBean(InvoiceService.class);
 
+
+System.out.println(service.add(new Invoice(891, "Kamesh", LocalDate.now(), 19000)));
+
+System.out.println(service.findByInvoiceNumber(103));
+
   service.findAll().forEach(System.out::println);
 
-  System.out.println(service.findByInvoiceNumber(103));
   
   ctx.close();
   
