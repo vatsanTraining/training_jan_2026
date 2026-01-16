@@ -8,4 +8,12 @@ and in parent module choose the project created earlier
 
 
 
+Create a Spring Boot Starter Project
+Add Web,DataJpa,H2,lombok dependency
+Copy the Invoice.java from spring_boot_jdbc_13
+copy application.yml from spring_boot_jdbc_13
+Add the JPA related annotation to Invoice.java
+Create a Repository InvoiceRepository extending JpaRepository
+Create a Service InvoiceService and Inject Invoice Repository use Constructor Injection
+Access the Service from Main method and Test
 

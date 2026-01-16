@@ -24,12 +24,25 @@ public class Timer {
 	 
 	public Object iamAround(ProceedingJoinPoint joinPoint) throws Throwable { 
 
-	System.out.println("Method Called $$$$$$$$$" +joinPoint.getSignature().getName()); 
+	    long startTime = System.nanoTime();
+
 
 	Object obj=joinPoint.proceed(); 
 
+    long endTime = System.nanoTime();
+    
+    long timeTaken = endTime - startTime;
+
+    double seconds = (double)timeTaken / 1_000_000_000.0;
+
 	
-	
+    String message = """
+    	    Method => %s 
+    	    completed within :=> %f Seconds
+    	    """.formatted(joinPoint.getSignature().getName(), seconds);
+
+    	System.out.println(message);
+
 	return obj;
 	
 	}
@@ -41,13 +54,19 @@ public class Timer {
 
 	Object obj=joinPoint.proceed(); 
 
+	if(obj instanceof Invoice) {
+		
 	Invoice inv = (Invoice)obj;
 	
-	var discount =inv.amount()*.10;
+	
+	double discount =inv.amount()-inv.amount()*.10;
 	
 	System.out.println("RETURN Value :#######>>>>"+ discount);
 	
-	
+    Invoice discountedInv = new Invoice(inv.invoiceNumber(),inv.customerName(),inv.invoiceDate() ,discount);
+
+	return discountedInv;
+	}
 	return obj;
 	
 	}

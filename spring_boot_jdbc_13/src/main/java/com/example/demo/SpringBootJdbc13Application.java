@@ -20,14 +20,14 @@ public class SpringBootJdbc13Application {
 InvoiceService service =	ctx.getBean(InvoiceService.class);
 
 
-System.out.println(service.add(new Invoice(891, "Kamesh", LocalDate.now(), 19000)));
+//System.out.println(service.add(new Invoice(891, "Kamesh", LocalDate.now(), 19000)));
 
 System.out.println(service.findByInvoiceNumber(103));
 
   service.findAll().forEach(System.out::println);
 
   
-  ctx.close();
+ // ctx.close();
   
 	}
 
