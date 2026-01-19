@@ -12,7 +12,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
+import com.example.demo.dto.InvoiceDto;
 import com.example.demo.entity.Invoice;
+import com.example.demo.model.Address;
 import com.example.demo.repos.InvoiceRepository;
 import com.example.demo.services.InvoiceService;
 import com.example.demo.utils.Status;
@@ -30,9 +32,9 @@ public class SpringBootDataJpa14Application {
 		ctx.getBean(InvoiceService.class).findAll().forEach(System.out::println);
 	
 		
-		Invoice invoice = ctx.getBean(Invoice.class);
+		InvoiceDto dto = ctx.getBean(InvoiceDto.class);
 
-		System.out.println(ctx.getBean(InvoiceService.class).save(invoice));
+		System.out.println(ctx.getBean(InvoiceService.class).save(dto));
 		
 		
 		//ctx.close();
@@ -45,9 +47,13 @@ public class SpringBootDataJpa14Application {
 	}
 	
 	@Bean
-	Invoice invoice() {
+	InvoiceDto dto() {
 		
-		return new Invoice(1034, "Rakesh",LocalDate.now(), 7000,Status.GENERATED); 
+		Address billing = new Address("Gandhi street", "indira nagar", "rajiv garden", 6002334);
+		
+		Address shipping = billing;
+		
+		return new InvoiceDto(1037, "Ratan",LocalDate.now(), 8000,Status.GENERATED,billing,shipping); 
 	}
 	
 	@Bean
@@ -59,11 +65,15 @@ public class SpringBootDataJpa14Application {
 			@Autowired
 			InvoiceRepository repo;
 			
+			
 			@Override
 			public void run(String... args) throws Exception {
+			
+				Address billing = new Address("Anna street", "Thambi nagar", "appa garden", 6003334);
 				
-				repo.save(new Invoice(1030, "Rakesh",LocalDate.now(), 8000,Status.GENERATED));
-				repo.save(new Invoice(1040, "Rangesh",LocalDate.now(), 9000,Status.GENERATED));
+				Address shipping = new Address("Sivaji street", "sambaji nagar", "pune", 4002334);
+				
+				repo.save(new Invoice(2032, "Leena",LocalDate.now(), 28000,Status.RECEIVED,billing,shipping));
 
 			}
 		};
