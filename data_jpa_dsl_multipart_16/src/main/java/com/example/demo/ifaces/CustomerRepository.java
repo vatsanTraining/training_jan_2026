@@ -33,7 +33,7 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
 	@Modifying
 	@Transactional
 	@Query(value = "update Customer set email =:revised where customerId=:custId")
-	int  updateEmailById(@Param("revised") String email,@Param("custId") int custId);
+	int  updateEmailById(@Param("revised") String email,@Param("custId") long custId);
 	
 	
 	

@@ -18,7 +18,7 @@ public class DataJpaDslMultipart16Application {
 	public static void main(String[] args) {
 	ConfigurableApplicationContext	ctx=SpringApplication.run(DataJpaDslMultipart16Application.class, args);
 	
-	    CustomerService service = ctx.getBean(CustomerService.class);
+	   // CustomerService service = ctx.getBean(CustomerService.class);
 	    
 	    //Customer customer = ctx.getBean(Customer.class);
 	    
@@ -34,23 +34,23 @@ public class DataJpaDslMultipart16Application {
 	    
 	    
 	    
-	    ImageService imgService = ctx.getBean(ImageService.class);
-	    
-	    
-	    ClassPathResource imageRef = new ClassPathResource("logo.jpeg");
-	    
-	    
-	       byte[] image=null;
-	       try(InputStream stream = imageRef.getInputStream()) {
-			
-	    	   image = stream.readAllBytes();
-	    	   
-	    	   imgService.save("logo","img/png", image);
-	    	   
-	    	   System.out.println("One Image Saved");
-	       }catch(Exception e) {
-	    	   e.printStackTrace();
-	       }
+//	    ImageService imgService = ctx.getBean(ImageService.class);
+//	    
+//	    
+//	    ClassPathResource imageRef = new ClassPathResource("logo.jpeg");
+//	    
+//	    
+//	       byte[] image=null;
+//	       try(InputStream stream = imageRef.getInputStream()) {
+//			
+//	    	   image = stream.readAllBytes();
+//	    	   
+//	    	   imgService.save("logo","img/png", image);
+//	    	   
+//	    	   System.out.println("One Image Saved");
+//	       }catch(Exception e) {
+//	    	   e.printStackTrace();
+//	       }
 
 	}
 

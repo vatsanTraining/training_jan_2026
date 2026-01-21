@@ -27,13 +27,18 @@ public class CustomerService {
 	}
 	
 
+	public Customer findById(Long id) {
+		
+		return this.repo.findById(id)
+				.orElseThrow(()-> new RuntimeException("Element with Given Id Not Found"));
+	}
 	public List<Customer> findAll() {
 
 		return this.repo.findAll();
 		
 	}
 	
-	public int  updateEmail(String revisedMail,int id){
+	public int  updateEmail(String revisedMail,long id){
 		
 		return this.repo.updateEmailById(revisedMail, id);
 	}
@@ -51,4 +56,18 @@ public class CustomerService {
 	}
 	
 
+	public void removeCustomer(Long id) {
+		
+		if(!this.repo.existsById(id)) {
+			throw new RuntimeException("Element With given Id Not found");
+		}
+		this.repo.deleteById(id);
+
+	}
+
+
+	public Customer update(Customer entity) {
+		// TODO Auto-generated method stub
+		return this.save(entity);
+	}
 }
