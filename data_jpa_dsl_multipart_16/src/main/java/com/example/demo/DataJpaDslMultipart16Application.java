@@ -1,18 +1,18 @@
 package com.example.demo;
 
-import java.io.InputStream;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
-import org.springframework.core.io.ClassPathResource;
 
 import com.example.demo.entity.Customer;
-import com.example.demo.services.CustomerService;
-import com.example.demo.services.ImageService;
+
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Info;
 
 @SpringBootApplication
+@OpenAPIDefinition(info = @Info(title = "Customer Management",version = "1.0"))
 public class DataJpaDslMultipart16Application {
 
 	public static void main(String[] args) {

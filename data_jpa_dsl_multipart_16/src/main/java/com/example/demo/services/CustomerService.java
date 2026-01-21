@@ -67,7 +67,17 @@ public class CustomerService {
 
 
 	public Customer update(Customer entity) {
-		// TODO Auto-generated method stub
 		return this.save(entity);
 	}
 }
+
+
+
+
+
+
+
+
+
+
+

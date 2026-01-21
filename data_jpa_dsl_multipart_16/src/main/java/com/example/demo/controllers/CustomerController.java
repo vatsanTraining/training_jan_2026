@@ -31,15 +31,16 @@ public class CustomerController {
 	
 	
 	@GetMapping
-	public List<Customer> findAll(){
+	public ResponseEntity<List<Customer>> findAll(){
 		
-		return this.service.findAll();
+		return ResponseEntity.status(HttpStatusCode.valueOf(200)).body(this.service.findAll());
+
 	}
 	
 	@GetMapping(path = "/xml", produces = "application/xml")
-	public List<Customer> findAllAsXML(){
+	public ResponseEntity<List<Customer>> findAllAsXML(){
 		
-		return this.service.findAll();
+		return ResponseEntity.status(HttpStatusCode.valueOf(200)).body(this.service.findAll());
 	}
 	
 
@@ -52,6 +53,15 @@ public class CustomerController {
 		
 	}
 	
+//	@PostMapping
+//	public Customer save(@RequestBody Customer entity){
+//		
+//		return this.service.save(entity);
+//		
+//		
+//		
+//	}
+	
 	@PutMapping
 	public ResponseEntity<Customer> update(@RequestBody Customer entity){
 		
@@ -61,7 +71,7 @@ public class CustomerController {
 		
 	}
 	
-	@PatchMapping(path ="/{id}",produces = "application/json")
+	@PatchMapping(path ="/{id}/{revisedMail}",produces = "application/json")
 	public ResponseEntity<String> updateEmil(@PathVariable long id, @PathVariable String revisedMail) {
 		
 		return ResponseEntity.ok().body(service.updateEmail(revisedMail,id) +"=Row Updated");
