@@ -1,12 +1,16 @@
 package com.example.demo;
 
+import java.io.InputStream;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.core.io.ClassPathResource;
 
 import com.example.demo.entity.Customer;
 import com.example.demo.services.CustomerService;
+import com.example.demo.services.ImageService;
 
 @SpringBootApplication
 public class DataJpaDslMultipart16Application {
@@ -26,7 +30,28 @@ public class DataJpaDslMultipart16Application {
 	    
 	   // System.out.println(service.findByCustomerName("Ramesh"));
 	    
-	    System.out.println("Row updated"+service.updateEmail("ramesh@abc.com", 1));
+	   // System.out.println("Row updated"+service.updateEmail("ramesh@abc.com", 1));
+	    
+	    
+	    
+	    ImageService imgService = ctx.getBean(ImageService.class);
+	    
+	    
+	    ClassPathResource imageRef = new ClassPathResource("logo.jpeg");
+	    
+	    
+	       byte[] image=null;
+	       try(InputStream stream = imageRef.getInputStream()) {
+			
+	    	   image = stream.readAllBytes();
+	    	   
+	    	   imgService.save("logo","img/png", image);
+	    	   
+	    	   System.out.println("One Image Saved");
+	       }catch(Exception e) {
+	    	   e.printStackTrace();
+	       }
+
 	}
 
 	

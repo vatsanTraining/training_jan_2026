@@ -14,7 +14,9 @@ public interface InvoiceMapper {
 	@Mapping(target = "createDate", ignore = true)
 	@Mapping(target = "modifiedDate", ignore = true)
 	@Mapping(target = "createdBy", ignore = true)
+	@Mapping(target = "invoiceNumber", ignore = true)
 	Invoice toEntity(InvoiceDto dto);
+
 	
 	InvoiceDto toDto(Invoice entity);
 	

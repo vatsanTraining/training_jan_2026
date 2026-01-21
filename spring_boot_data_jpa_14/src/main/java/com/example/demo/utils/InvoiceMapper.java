@@ -15,6 +15,7 @@ public interface InvoiceMapper {
 	@Mapping(target = "createDate", ignore = true)
 	@Mapping(target = "modifiedDate", ignore = true)
 	@Mapping(target = "createdBy", ignore = true)
+    @Mapping(target = "invoiceNumber", ignore = true) // Ignore ID during creation
 
 	Invoice toEntity(InvoiceDto dto);
 	
@@ -23,3 +24,4 @@ public interface InvoiceMapper {
 	
 	
 }
+

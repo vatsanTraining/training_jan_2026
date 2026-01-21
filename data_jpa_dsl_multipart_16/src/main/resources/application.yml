@@ -14,7 +14,13 @@ spring:
     console:
       enabled: true
       path: /h2-console
-
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: "10MB"
+      max-request-size: "10MB"
+        
+        
 server:
   port: 5050
 logging:
@@ -23,3 +29,4 @@ logging:
       h2: trace
       springframework:
         jdbc: trace
+

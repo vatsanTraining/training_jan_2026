@@ -6,7 +6,7 @@ import com.example.demo.model.Address;
 import com.example.demo.utils.Status;
 
 public record InvoiceDto(
-		int invoiceNumber,
+		Integer invoiceNumber,
 		String customerName,
 		LocalDate invoiceDate,
 		Status status,
@@ -14,7 +14,7 @@ public record InvoiceDto(
 		Address billingAddress,
 		Address shippingAddress) {
 
-	public InvoiceDto(int i, String string, LocalDate now, int j, Status generated, Address billing, Address shipping) {
+	public InvoiceDto(Integer i, String string, LocalDate now, int j, Status generated, Address billing, Address shipping) {
       this(i, string, now, generated, j, billing, shipping);
 	}
 

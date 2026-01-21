@@ -1,6 +1,7 @@
 package com.example.demo.services;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -25,10 +26,10 @@ public class InvoiceService {
 	}
 	
 	
-	public List<Invoice> findAll(){
+	public List<InvoiceDto> findAll(){
 		
-		// map to dto and return 
-		return this.repo.findAll();
+		return this.repo.findAll().stream().map(e-> mapper.toDto(e)).collect(Collectors.toList());
+		 
 	}
 	
 	
@@ -38,4 +39,8 @@ public class InvoiceService {
 		
 		return mapper.toDto(saved);
 	}
+	
+	//deleteById, update and findByid 
+	// and use the them rest controller and test with postman
+	
 }
