@@ -14,7 +14,8 @@ import io.swagger.v3.oas.annotations.servers.Server;
 
 @SpringBootApplication
 @OpenAPIDefinition(info = @Info(title = "Customer Management",version = "1.0"),
- servers = {@Server(url="http://localhost:5050/",description = "Local server")})
+ servers = {@Server(url="http://localhost:5050/",description = "Local server"),
+		 @Server(url="https://prod.example.com/",description = "Production server")})
 public class DataJpaDslMultipart16Application {
 
 	public static void main(String[] args) {

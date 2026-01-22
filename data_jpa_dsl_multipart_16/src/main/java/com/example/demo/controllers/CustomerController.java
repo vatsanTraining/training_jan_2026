@@ -18,6 +18,8 @@ import com.example.demo.entity.Customer;
 import com.example.demo.services.CustomerService;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.AllArgsConstructor;
 
 @RestController
@@ -45,6 +47,9 @@ public class CustomerController {
 	}
 	
 
+	@PostMapping
+	@Operation(description = "Used to Persist to Data" ,summary = "Add One Customer Detail Resource")
+	@ApiResponses(@ApiResponse(responseCode = "201",description = "Shows customer added successfully"))
 	public ResponseEntity<Customer> save(@RequestBody Customer entity){
 		
 		Customer saved = this.service.save(entity);

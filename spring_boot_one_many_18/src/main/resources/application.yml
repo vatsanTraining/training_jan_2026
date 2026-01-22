@@ -1,0 +1,36 @@
+#springdoc:
+#  api-docs:
+#    version: OPENAPI_3_0
+
+spring:
+  application:
+    name: one_to_many
+  datasource:
+    url: jdbc:h2:file:~/trainDb   
+    username: sa
+    password: ''
+    driver-class-name: org.h2.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+        
+        
+server:
+  port: 5055
+logging:
+  level:
+    org:
+      h2: trace
+      springframework:
+        jdbc: trace
+
+management:
+  endpoints:
+    web:
+      exposure:
+        exclude: "*"
