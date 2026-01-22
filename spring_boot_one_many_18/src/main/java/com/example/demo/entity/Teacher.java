@@ -36,7 +36,7 @@ public class Teacher{
 	private String department;
 	
 	@OneToMany(targetEntity = Student.class,fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-	@JoinColumn(name = "", referencedColumnName = "")
+	@JoinColumn(name = "teacher_ref", referencedColumnName = "teacher_id")
 	Set<Student> students;
 	
 	

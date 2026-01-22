@@ -27,13 +27,13 @@ public class Student {
 	@Column(name="roll_number")
 	private int rollNumber;
 	
-	@Column(name="roll_number")
+	@Column(name="student_name")
 	private String studentName;
 	
-	@Column(name="roll_number")
+	@Column(name="email")
 	private String email;
 	
-	@Column(name="roll_number")
+	@Column(name="mark")
 	private BigDecimal mark;
 	
 }

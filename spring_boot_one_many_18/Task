@@ -1,0 +1,20 @@
+Task -1
+
+Add the Remaining CRUD Operation like create,update,delete 
+Provide a method to find the students of a given department
+Find the average mark of students a given department
+Add the Open API Documentation 
+ADD the Actuator Info endpoint
+Secure the endpoints with in-memory userdetails
+
+Ratna sagar
+
+Task -2
+
+One to One Bidirectional Task
+
+Create a Entity Class BankAccount and another entity class Nominee 
+
+Create the appropriate mapping and run the code
+
+suravi kumar i and satosh ojha
