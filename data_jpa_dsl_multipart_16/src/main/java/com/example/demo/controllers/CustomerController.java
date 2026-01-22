@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.entity.Customer;
 import com.example.demo.services.CustomerService;
 
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
 
 @RestController
@@ -44,7 +45,6 @@ public class CustomerController {
 	}
 	
 
-	@PostMapping
 	public ResponseEntity<Customer> save(@RequestBody Customer entity){
 		
 		Customer saved = this.service.save(entity);

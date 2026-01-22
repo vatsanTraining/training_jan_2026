@@ -7,6 +7,6 @@ import com.example.demo.entity.WebUser;
 
 public interface WebUserRepository extends JpaRepository<WebUser, Long> {
 
-	UserDetails findByUserName(String username);
+	UserDetails findByUsername(String username);
 
 }
