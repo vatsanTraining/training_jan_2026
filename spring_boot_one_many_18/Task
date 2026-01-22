@@ -5,7 +5,9 @@ Provide a method to find the students of a given department
 Find the average mark of students a given department
 Add the Open API Documentation 
 ADD the Actuator Info endpoint
-Secure the endpoints with in-memory userdetails
+Secure the controller endpoints with in-memory userdetails
+Optionally you can use profiles to configure
+
 
 Ratna sagar
 
@@ -17,4 +19,4 @@ Create a Entity Class BankAccount and another entity class Nominee
 
 Create the appropriate mapping and run the code
 
-suravi kumar i and satosh ojha
+suravi kumari  and satosh ojha
