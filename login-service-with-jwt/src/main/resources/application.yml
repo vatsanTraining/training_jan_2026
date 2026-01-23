@@ -29,3 +29,8 @@ logging:
         orm:
          jdbc:
             bind: trace
+
+jwt:
+ secret: 840OUHb4vZMQLfDTg0PPpn6vdIbHItcAwfAJw30nE/Y=
+ expiration:
+   ms: 10

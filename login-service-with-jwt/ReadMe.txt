@@ -18,10 +18,15 @@
 			<scope>runtime</scope>
 		</dependency>
 
-		3. Create a Controller with one Point which will be accessed with jwt token
+		3. Create a Controller with one EndPoint which will be accessed with jwt token
 		4. Create a @Configuration class and Register BcryptpasswordEncode and AuthentictionManager
-		5.Create a @Service Annotated class JwtFilter and JwtGeneratorUtil
-		6. Inject the JwtFilter to SecurityFilter Class 
-		4.Update the Security Configuration to use JWT Authentication Filter
-		5. Create a JWT Utility class to generate and validate JWT tokens
+		5.Create a @Service Annotated class JwtGeneratorUtil
+		6. Add Method to extractUserName(),extractPassword(),init() , isTokenExpire and isTokenValid methods
+		7.Create a @Service annotated class JwtAuthenticationFilter extending OncePerRequestFilter
+		8 Inject UserDetailService and JwtUtil override the doFilterInternal
+		9. Inject the JwtFilter to SecurityFilter Class 
+		10.Update the Security Configuration to use JWT Authentication Filter
+		11  Inject passwordendcoder,jwtauthFilter and userDetailsService
+		12. Add Login method to authController class and call 
+		
 		

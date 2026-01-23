@@ -1,7 +1,9 @@
 package com.example.demo.controllers;
 
+import com.example.demo.dto.AuthRequest;
 import com.example.demo.dto.RegistrationRequest;
 import com.example.demo.entity.WebUser;
+import com.example.demo.services.AuthService;
 import com.example.demo.services.UserServiceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +22,8 @@ public class AuthController {
     @Autowired
     private UserServiceImpl userService; 
     
-    
+    @Autowired
+    private  AuthService authService;
     
     @Autowired
     private PasswordEncoder passwordEncoder; 
@@ -45,6 +48,17 @@ public class AuthController {
         return new ResponseEntity<>("User registered successfully!", HttpStatus.OK);
     }
     
+
+    @PostMapping(path =  "/login")
+    public ResponseEntity<String> login(@RequestBody AuthRequest request) {
+
+        String token = authService.authenticate(
+                request.username(),
+                request.password()
+        );
+
+        return ResponseEntity.ok(token);
+    }
 
 
 
