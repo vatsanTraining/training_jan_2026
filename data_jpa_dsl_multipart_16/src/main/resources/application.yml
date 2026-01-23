@@ -33,4 +33,6 @@ logging:
       h2: trace
       springframework:
         jdbc: trace
+        jpa: trace
+        
 

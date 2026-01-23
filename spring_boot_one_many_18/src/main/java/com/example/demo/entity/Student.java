@@ -23,7 +23,6 @@ import lombok.NoArgsConstructor;
 public class Student {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="roll_number")
 	private int rollNumber;
 	

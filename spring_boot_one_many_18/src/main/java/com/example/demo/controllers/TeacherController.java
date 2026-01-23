@@ -11,9 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.dto.StudentDto;
+import com.example.demo.dto.TeacherDto;
 import com.example.demo.entity.Teacher;
 import com.example.demo.repos.TeacherRepository;
 import com.example.demo.services.StudentService;
+import com.example.demo.services.TeacherService;
+import com.example.demo.utils.CustomMapper;
 
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -26,21 +29,21 @@ public class TeacherController {
 	
 	
 	
-	private TeacherRepository repo;
+	private TeacherService service;
 	
 	@GetMapping
 	ResponseEntity<List<Teacher>> findAll(){
 		
 		
-		return ResponseEntity.status(HttpStatus.CREATED).body(this.repo.findAll());
+		return ResponseEntity.status(HttpStatus.CREATED).body(this.service.findAll());
 		
 	}
 	
 
 	@PostMapping
-	ResponseEntity<Teacher> save(@Valid @RequestBody Teacher teacher){
+	ResponseEntity<Teacher> save(@Valid @RequestBody TeacherDto dto){
 		
-		Teacher saved=this.repo.save(teacher);
+		Teacher saved=this.service.save(dto);
 		
 		return ResponseEntity.status(HttpStatus.CREATED).body(saved);
 		
