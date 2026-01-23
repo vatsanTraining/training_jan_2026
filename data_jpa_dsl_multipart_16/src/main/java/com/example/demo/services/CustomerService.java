@@ -2,6 +2,8 @@ package com.example.demo.services;
 
 import java.util.List;
 
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -40,6 +42,8 @@ public class CustomerService {
 		
 	}
 	
+	@CachePut(value = "customerById",key = "#id")
+
 	public int  updateEmail(String revisedMail,long id){
 		
 		return this.repo.updateEmailById(revisedMail, id);
@@ -58,6 +62,7 @@ public class CustomerService {
 	}
 	
 
+	@CacheEvict(value = "customerById",key = "#id")
 	public void removeCustomer(Long id) {
 		
 		if(!this.repo.existsById(id)) {

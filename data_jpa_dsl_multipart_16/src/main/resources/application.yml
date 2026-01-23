@@ -36,4 +36,9 @@ logging:
         jpa: trace
         cache: trace
         
-
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        
