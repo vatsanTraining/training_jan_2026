@@ -34,5 +34,6 @@ logging:
       springframework:
         jdbc: trace
         jpa: trace
+        cache: trace
         
 

@@ -28,6 +28,7 @@ public class CustomerService {
 	}
 	
 
+	@Cacheable(value = "customerById",key = "#id")
 	public Customer findById(Long id) {
 		
 		return this.repo.findById(id)

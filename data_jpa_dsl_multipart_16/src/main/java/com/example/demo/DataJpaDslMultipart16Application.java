@@ -14,6 +14,7 @@ import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.servers.Server;
 
 @SpringBootApplication
+@EnableCaching
 @OpenAPIDefinition(info = @Info(title = "Customer Management",version = "1.0"),
  servers = {@Server(url="http://localhost:5050/",description = "Local server"),
 		 @Server(url="https://prod.example.com/",description = "Production server")})
