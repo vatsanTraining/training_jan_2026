@@ -21,6 +21,7 @@ logging:
     org:
       springframework:
         jdbc: debug
+        security: trace
         data:
           jpa: debug
       hibernate:

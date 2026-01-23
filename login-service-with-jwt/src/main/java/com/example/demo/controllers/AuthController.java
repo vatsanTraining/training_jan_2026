@@ -6,6 +6,8 @@ import com.example.demo.entity.WebUser;
 import com.example.demo.services.AuthService;
 import com.example.demo.services.UserServiceImpl;
 
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,17 +19,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/v1/auth")
+@RequiredArgsConstructor
 public class AuthController {
 
-    @Autowired
-    private UserServiceImpl userService; 
-    
-    @Autowired
-    private  AuthService authService;
-    
-    @Autowired
-    private PasswordEncoder passwordEncoder; 
-    
+    private final AuthService authService;
+    private final UserServiceImpl userService;
+ 
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody RegistrationRequest registrationRequest) {
         if (userService.existsByUsername(registrationRequest.username())) {
@@ -37,14 +34,8 @@ public class AuthController {
             return new ResponseEntity<>("Error: Email is already in use!", HttpStatus.BAD_REQUEST);
         }
 
-        WebUser user = new WebUser();
-        user.setUsername(registrationRequest.username());
-        user.setEmail(registrationRequest.email());
-        user.setPassword(passwordEncoder.encode(registrationRequest.password())); 
-        user.setRole(registrationRequest.role());
+        userService.saveUser(registrationRequest);
         
-        userService.saveUser(user);
-
         return new ResponseEntity<>("User registered successfully!", HttpStatus.OK);
     }
     

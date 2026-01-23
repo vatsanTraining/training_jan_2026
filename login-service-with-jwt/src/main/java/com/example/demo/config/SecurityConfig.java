@@ -20,20 +20,20 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import com.example.demo.jwt.JwtAuthenticationFilter;
 import com.example.demo.services.UserServiceImpl;
 
+import lombok.RequiredArgsConstructor;
+
 
 @Configuration
 @EnableWebSecurity
+@RequiredArgsConstructor
 public class SecurityConfig {
 
-    @Autowired
-    UserServiceImpl userDetailsService; 
     
-    @Autowired
-    BCryptPasswordEncoder encoder;
-    
-    @Autowired
-    private  JwtAuthenticationFilter jwtAuthFilter;
-    
+    private final JwtAuthenticationFilter jwtAuthFilter;
+    private final UserServiceImpl userDetailsService;
+    private final PasswordEncoder encoder;
+
+        
     @Bean
     AuthenticationProvider authenticationProvider() {
        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider(userDetailsService);
@@ -42,27 +42,24 @@ public class SecurityConfig {
    }
 
 
-
     
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-       http
-       .csrf(csrf -> csrf.disable()) 
-       .authorizeHttpRequests(auth -> auth
-           .requestMatchers(PathRequest.toH2Console()).permitAll() 
-           .requestMatchers("/api/v1/auth/**").permitAll()
-           .anyRequest().authenticated()
-       )
-       .headers(headers -> headers
-           .frameOptions(frame -> frame.sameOrigin()) 
-       );
- 
-       http.sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-       .authenticationProvider(authenticationProvider())
-       .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+    	http
+        .csrf(csrf -> csrf.disable())
+        .authorizeHttpRequests(auth -> auth
+            .requestMatchers("/api/v1/auth/**", "/error").permitAll()
+            .anyRequest().authenticated()
+        ).headers(headers -> headers.frameOptions(frame -> frame.sameOrigin()))
+        .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+        .authenticationProvider(authenticationProvider())
+        .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
+    return http.build();
+
+
+    	
        
-       return http.build();
    }
 
 }
