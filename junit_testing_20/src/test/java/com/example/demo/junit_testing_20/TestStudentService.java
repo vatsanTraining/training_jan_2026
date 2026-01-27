@@ -2,15 +2,21 @@ package com.example.demo.junit_testing_20;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInfo;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class TestStudentService {
 
@@ -25,6 +31,14 @@ class TestStudentService {
 		nameList = List.of("Ramesh","Suresh","Magesh");
 		
 		System.out.println("Before All Called ========");
+		
+		StudentService.marks=new HashSet<>();
+		
+		StudentService.marks.add(50);
+		StudentService.marks.add(60);
+		StudentService.marks.add(70);
+		
+		
 		
 	}
 	
@@ -51,8 +65,53 @@ class TestStudentService {
 	}
 	
 	@Test
+	@DisplayName("Test Get Message Method other features using Java 8 ")
+	void testGetMessageOtherFeatures() {
+		
+		
+		assertAll("Test Multiple",
+				() ->{
+				 assertEquals("B" ,service.assignGrade(50))	;
+				},
+				() ->{
+				var exception=	 assertThrows(RuntimeException.class, ()-> service.assignGrade(-20));
+
+				      assertEquals("ERR-109", exception.getMessage());
+				},
+				()->{
+				}
+				);
+		
+	}
+	
+	
+	@Test
+	@Disabled
+	void dummyTest() {
+		
+		fail("Not Yet implemented");
+	}
+
+	@ParameterizedTest
+	@ValueSource(ints = {1,3,5})
+	@DisplayName("Elmenents should not be null in odd positions")
+	void testGetNameMethod(int idxPos) {
+		
+		assertNotNull(service.getName().get(idxPos));
+	}
+
+	@RepeatedTest(2)
+	@DisplayName("Marks should not accept a duplicate value since its a set")
+	void testDoesNotAcceptDuplicate() {
+		
+	assertEquals(true, StudentService.marks.add(78));	 ;
+		
+		
+	}
+	
+	@Test
 	@DisplayName("Testing the various Requirements of assign grade")
-	void testAssignGrade() {
+	void testAssignGrade()  {
 		
 		   String actual= service.assignGrade(60);
 		   
@@ -75,4 +134,6 @@ class TestStudentService {
 		System.out.println("AFTER EACH Called @@@@@@=>"+ info.getTestMethod().get().getName() + "Called");
 
 	}
+	
+	
 }
