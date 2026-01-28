@@ -2,6 +2,8 @@ package com.example.demo.controllers;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -32,6 +34,9 @@ public class CustomerController {
 	
 	private final CustomerService service;
 	
+    private final Environment env;
+
+    
 	
 	@GetMapping
 	public ResponseEntity<List<Customer>> findAll(){

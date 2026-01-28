@@ -1,19 +1,21 @@
 -------------------------------------------------------------------------------
-Test set: com.example.demo.junit_testing_20.TestStudentService
+Test set: com.example.demo.junit_testing_20.StudentServiceTest
 -------------------------------------------------------------------------------
-Tests run: 10, Failures: 1, Errors: 1, Skipped: 1, Time elapsed: 0.043 s <<< FAILURE! -- in com.example.demo.junit_testing_20.TestStudentService
-com.example.demo.junit_testing_20.TestStudentService.testPrivateMethod -- Time elapsed: 0.007 s <<< ERROR!
-java.lang.IllegalArgumentException: object is not an instance of declaring class
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at com.example.demo.junit_testing_20.TestStudentService.testPrivateMethod(TestStudentService.java:75)
+Tests run: 10, Failures: 2, Errors: 0, Skipped: 1, Time elapsed: 0.047 s <<< FAILURE! -- in com.example.demo.junit_testing_20.StudentServiceTest
+com.example.demo.junit_testing_20.StudentServiceTest.testPrivateMethod -- Time elapsed: 0.011 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <ramesh,suresh> but was: <rameshsuresh>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
+	at com.example.demo.junit_testing_20.StudentServiceTest.testPrivateMethod(StudentServiceTest.java:91)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.example.demo.junit_testing_20.TestStudentService.testDoesNotAcceptDuplicate -- Time elapsed: 0.001 s <<< FAILURE!
+com.example.demo.junit_testing_20.StudentServiceTest.testDoesNotAcceptDuplicate -- Time elapsed: 0.001 s <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
@@ -21,7 +23,7 @@ org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
 	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
 	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
-	at com.example.demo.junit_testing_20.TestStudentService.testDoesNotAcceptDuplicate(TestStudentService.java:123)
+	at com.example.demo.junit_testing_20.StudentServiceTest.testDoesNotAcceptDuplicate(StudentServiceTest.java:137)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
 	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
 	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)

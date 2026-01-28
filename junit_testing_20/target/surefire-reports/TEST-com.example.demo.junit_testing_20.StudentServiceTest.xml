@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.1" name="com.example.demo.junit_testing_20.TestStudentService" time="0.043" tests="10" errors="1" skipped="1" failures="1">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.1" name="com.example.demo.junit_testing_20.StudentServiceTest" time="0.047" tests="10" errors="0" skipped="1" failures="2">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -9,10 +9,10 @@
     <property name="java.vendor.url" value="https://java.oracle.com/"/>
     <property name="os.name" value="Mac OS X"/>
     <property name="java.vm.specification.version" value="17"/>
-    <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="GB"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/srivatsan/git/jan_26/junit_testing_20/target/surefire/surefirebooter-20260127144418006_3.jar /Users/srivatsan/git/jan_26/junit_testing_20/target/surefire 2026-01-27T14-44-17_964-jvmRun1 surefire-20260127144418006_1tmp surefire_0-20260127144418006_2tmp"/>
+    <property name="sun.java.command" value="/Users/srivatsan/git/jan_26/junit_testing_20/target/surefire/surefirebooter-20260127151126945_3.jar /Users/srivatsan/git/jan_26/junit_testing_20/target/surefire 2026-01-27T15-11-26_908-jvmRun1 surefire-20260127151126945_1tmp surefire_0-20260127151126945_2tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/Users/srivatsan/git/jan_26/junit_testing_20/target/test-classes:/Users/srivatsan/git/jan_26/junit_testing_20/target/classes:/Users/srivatsan/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.11.0/junit-jupiter-api-5.11.0.jar:/Users/srivatsan/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/srivatsan/.m2/repository/org/junit/platform/junit-platform-commons/1.11.0/junit-platform-commons-1.11.0.jar:/Users/srivatsan/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/srivatsan/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.11.0/junit-jupiter-params-5.11.0.jar:"/>
@@ -27,9 +27,9 @@
     <property name="basedir" value="/Users/srivatsan/git/jan_26/junit_testing_20"/>
     <property name="java.vm.compressedOopsMode" value="Zero based"/>
     <property name="line.separator" value="&#10;"/>
-    <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
-    <property name="surefire.real.class.path" value="/Users/srivatsan/git/jan_26/junit_testing_20/target/surefire/surefirebooter-20260127144418006_3.jar"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="/Users/srivatsan/git/jan_26/junit_testing_20/target/surefire/surefirebooter-20260127151126945_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="17.0.8+9-LTS-211"/>
@@ -39,6 +39,7 @@
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="file.encoding" value="UTF-8"/>
     <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="testFailureIgnore" value="true"/>
     <property name="localRepository" value="/Users/srivatsan/.m2/repository"/>
     <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
     <property name="java.io.tmpdir" value="/var/folders/dv/vmljfmvs6g15rxz7kq6dpl6w0000gn/T/"/>
@@ -55,36 +56,38 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="testPrivateMethod" classname="com.example.demo.junit_testing_20.TestStudentService" time="0.007">
-    <error message="object is not an instance of declaring class" type="java.lang.IllegalArgumentException"><![CDATA[java.lang.IllegalArgumentException: object is not an instance of declaring class
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at com.example.demo.junit_testing_20.TestStudentService.testPrivateMethod(TestStudentService.java:75)
+  <testcase name="testPrivateMethod" classname="com.example.demo.junit_testing_20.StudentServiceTest" time="0.011">
+    <failure message="expected: &lt;ramesh,suresh&gt; but was: &lt;rameshsuresh&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <ramesh,suresh> but was: <rameshsuresh>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
+	at com.example.demo.junit_testing_20.StudentServiceTest.testPrivateMethod(StudentServiceTest.java:91)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-]]></error>
+]]></failure>
     <system-out><![CDATA[Before All Called ========
 BEFORE EACH Called @@@@@@=>testPrivateMethodCalled
 AFTER EACH Called @@@@@@=>testPrivateMethodCalled
 ]]></system-out>
   </testcase>
-  <testcase name="testGetMessageOtherFeatures" classname="com.example.demo.junit_testing_20.TestStudentService" time="0.003">
+  <testcase name="testGetMessageOtherFeatures" classname="com.example.demo.junit_testing_20.StudentServiceTest" time="0.003">
     <system-out><![CDATA[BEFORE EACH Called @@@@@@=>testGetMessageOtherFeaturesCalled
 AFTER EACH Called @@@@@@=>testGetMessageOtherFeaturesCalled
 ]]></system-out>
   </testcase>
-  <testcase name="dummyTest" classname="com.example.demo.junit_testing_20.TestStudentService" time="0.0">
-    <skipped message="void com.example.demo.junit_testing_20.TestStudentService.dummyTest() is @Disabled"/>
+  <testcase name="dummyTest" classname="com.example.demo.junit_testing_20.StudentServiceTest" time="0.0">
+    <skipped message="void com.example.demo.junit_testing_20.StudentServiceTest.dummyTest() is @Disabled"/>
   </testcase>
-  <testcase name="testDoesNotAcceptDuplicate" classname="com.example.demo.junit_testing_20.TestStudentService" time="0.001">
+  <testcase name="testDoesNotAcceptDuplicate" classname="com.example.demo.junit_testing_20.StudentServiceTest" time="0.001">
     <system-out><![CDATA[BEFORE EACH Called @@@@@@=>testDoesNotAcceptDuplicateCalled
 AFTER EACH Called @@@@@@=>testDoesNotAcceptDuplicateCalled
 ]]></system-out>
   </testcase>
-  <testcase name="testDoesNotAcceptDuplicate" classname="com.example.demo.junit_testing_20.TestStudentService" time="0.001">
+  <testcase name="testDoesNotAcceptDuplicate" classname="com.example.demo.junit_testing_20.StudentServiceTest" time="0.001">
     <failure message="expected: &lt;true&gt; but was: &lt;false&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
@@ -92,7 +95,7 @@ AFTER EACH Called @@@@@@=>testDoesNotAcceptDuplicateCalled
 	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
 	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
 	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
-	at com.example.demo.junit_testing_20.TestStudentService.testDoesNotAcceptDuplicate(TestStudentService.java:123)
+	at com.example.demo.junit_testing_20.StudentServiceTest.testDoesNotAcceptDuplicate(StudentServiceTest.java:137)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
 	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
 	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
@@ -124,27 +127,27 @@ AFTER EACH Called @@@@@@=>testDoesNotAcceptDuplicateCalled
 AFTER EACH Called @@@@@@=>testDoesNotAcceptDuplicateCalled
 ]]></system-out>
   </testcase>
-  <testcase name="testGetNameMethod(int)[1]" classname="com.example.demo.junit_testing_20.TestStudentService" time="0.002">
+  <testcase name="testGetNameMethod(int)[1]" classname="com.example.demo.junit_testing_20.StudentServiceTest" time="0.002">
     <system-out><![CDATA[BEFORE EACH Called @@@@@@=>testGetNameMethodCalled
 AFTER EACH Called @@@@@@=>testGetNameMethodCalled
 ]]></system-out>
   </testcase>
-  <testcase name="testGetNameMethod(int)[2]" classname="com.example.demo.junit_testing_20.TestStudentService" time="0.0">
+  <testcase name="testGetNameMethod(int)[2]" classname="com.example.demo.junit_testing_20.StudentServiceTest" time="0.0">
     <system-out><![CDATA[BEFORE EACH Called @@@@@@=>testGetNameMethodCalled
 AFTER EACH Called @@@@@@=>testGetNameMethodCalled
 ]]></system-out>
   </testcase>
-  <testcase name="testGetNameMethod(int)[3]" classname="com.example.demo.junit_testing_20.TestStudentService" time="0.001">
+  <testcase name="testGetNameMethod(int)[3]" classname="com.example.demo.junit_testing_20.StudentServiceTest" time="0.0">
     <system-out><![CDATA[BEFORE EACH Called @@@@@@=>testGetNameMethodCalled
 AFTER EACH Called @@@@@@=>testGetNameMethodCalled
 ]]></system-out>
   </testcase>
-  <testcase name="testAssignGrade" classname="com.example.demo.junit_testing_20.TestStudentService" time="0.0">
+  <testcase name="testAssignGrade" classname="com.example.demo.junit_testing_20.StudentServiceTest" time="0.0">
     <system-out><![CDATA[BEFORE EACH Called @@@@@@=>testAssignGradeCalled
 AFTER EACH Called @@@@@@=>testAssignGradeCalled
 ]]></system-out>
   </testcase>
-  <testcase name="testGetMessage" classname="com.example.demo.junit_testing_20.TestStudentService" time="0.0">
+  <testcase name="testGetMessage" classname="com.example.demo.junit_testing_20.StudentServiceTest" time="0.001">
     <system-out><![CDATA[BEFORE EACH Called @@@@@@=>testGetMessageCalled
 AFTER EACH Called @@@@@@=>testGetMessageCalled
 ]]></system-out>

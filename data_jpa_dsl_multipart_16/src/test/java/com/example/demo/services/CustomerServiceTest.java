@@ -15,10 +15,10 @@ import com.example.demo.entity.Customer;
 import com.example.demo.ifaces.CustomerRepository;
 
 @ExtendWith(MockitoExtension.class)
-public class TestCustomerService {
+public class CustomerServiceTest {
 	
 	
-	@InjectMocks
+    @InjectMocks
 	CustomerService service;
 	
 	@Mock
@@ -31,7 +31,7 @@ public class TestCustomerService {
 		
 		Customer actual = service.findById(1L);
 		
-		Customer expected =new Customer(1L,"RAMESH", 9002232, "ram@abc.org");
+		Customer expected =new Customer(1L,"Ramesh", 9002232, "ram@abc.com");
 		verify(repo,times(1)).findById(1L);
 		
 		assertEquals(expected, actual);

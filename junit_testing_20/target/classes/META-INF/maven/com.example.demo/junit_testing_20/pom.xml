@@ -43,8 +43,8 @@
   </dependencies>
 
   <build>
-  <plugins>
-  <plugin>
+      <plugins>
+        <plugin>
             <groupId>org.jacoco</groupId>
             <artifactId>jacoco-maven-plugin</artifactId>
             <version>0.8.12</version>
@@ -55,16 +55,23 @@
                         <goal>prepare-agent</goal>
                     </goals>
                 </execution>
-               <execution>
+                <execution>
                     <id>report</id>
-                    <phase>prepare-package</phase>
+                    <phase>verify</phase> <!-- Run during verify -->
                     <goals>
                         <goal>report</goal>
                     </goals>
                 </execution>
             </executions>
         </plugin>
-        </plugins>
+        
+        <plugin>
+            <artifactId>maven-surefire-plugin</artifactId>
+        </plugin>
+        <plugin>
+            <artifactId>maven-site-plugin</artifactId>
+        </plugin>
+    </plugins>
 
   <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
@@ -113,13 +120,17 @@
   <reporting>
     <plugins>
         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-report-plugin</artifactId>
+            <version>3.3.0</version> <!-- Match your surefire version -->
+        </plugin>
+        <plugin>
             <groupId>org.jacoco</groupId>
             <artifactId>jacoco-maven-plugin</artifactId>
-            <version>0.8.12</version>
             <reportSets>
                 <reportSet>
                     <reports>
-		<report>report</report>
+                        <report>report</report>
                     </reports>
                 </reportSet>
             </reportSets>

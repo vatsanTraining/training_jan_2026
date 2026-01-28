@@ -18,7 +18,7 @@ import org.junit.jupiter.api.TestInfo;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-class TestStudentService {
+class StudentServiceTest {
 
 	
 	private static List<String> nameList;
@@ -64,17 +64,6 @@ class TestStudentService {
 		
 	}
 	
-private String concat(String ...strings) {
-		
-		StringBuffer buffer = new StringBuffer();
-		
-		for(String eachString :strings) {
-			
-			buffer.append(eachString);
-		}
-		
-		return buffer.toString();
-	}
 	@Test
 	@DisplayName("Test Private Method Not Recommended Only if no other options are availabe")
 	void testPrivateMethod() throws Exception{
@@ -88,7 +77,7 @@ private String concat(String ...strings) {
 		
 		String actual =(String)privateMethod.invoke(service,(Object)args);
 		
-		assertEquals("ramesh,suresh", actual);
+		assertEquals("ramesh:suresh", actual);
 		
 		
 		
@@ -130,12 +119,14 @@ private String concat(String ...strings) {
 		assertNotNull(service.getName().get(idxPos));
 	}
 
-	@RepeatedTest(2)
+
+	@Test
 	@DisplayName("Marks should not accept a duplicate value since its a set")
 	void testDoesNotAcceptDuplicate() {
 		
-	assertEquals(true, StudentService.marks.add(78));	 ;
 		
+    assertTrue(StudentService.marks.add(78), "First add should be true");
+    assertFalse(StudentService.marks.add(78), "Second add should be false");
 		
 	}
 	

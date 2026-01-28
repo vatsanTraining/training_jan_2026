@@ -62,14 +62,12 @@ public class StudentService {
 	
 	private String concat(String ...strings) {
 		
-		StringBuffer buffer = new StringBuffer();
 		
-		for(String eachString :strings) {
 			
-			buffer.append(eachString);
-		}
+		    return String.join(":", strings);
 		
-		return buffer.toString();
 	}
+
 	
+
 }
