@@ -8,20 +8,28 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.dto.CustomerResponse;
 import com.example.demo.ifaces.MyClient;
+import com.example.demo.services.ClientService;
 
 @RestController
 public class ClientController {
 
-	private  MyClient client;
+	private  ClientService service;
 
-	public ClientController(MyClient client) {
+	public ClientController(ClientService service) {
 		super();
-		this.client = client;
+		this.service = service;
 	}
 	
 	@GetMapping("/api/v1/clients")
 	public ResponseEntity<List<CustomerResponse>> findAll(){
 		
-		return ResponseEntity.ok().body(this.client.findAll());
+		return ResponseEntity.ok().body(this.service.findAll());
 	}
+	
+	@GetMapping("/api/v1/ports")
+	public ResponseEntity<String> getPort(){
+		
+		return ResponseEntity.ok().body(this.service.getPort());
+	}
+	
 }

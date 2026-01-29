@@ -109,6 +109,7 @@
 	</dependencies>
 
 	<build>
+	<finalName>firstservice</finalName>
 	<plugins>
         <plugin>
             <groupId>org.jacoco</groupId>

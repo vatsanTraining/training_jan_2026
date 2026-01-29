@@ -1,8 +1,8 @@
-
+server:
+   port: 8040
 springdoc:
   api-docs:
     version: OPENAPI_3_0
-
 spring:
   application:
     name: data-jpa-dsl-multipart
@@ -26,8 +26,8 @@ spring:
       max-request-size: "10MB"
         
         
-server:
-  port: 5050
+#server:
+#  port: 5050
 logging:
   level:
     org:

@@ -12,4 +12,9 @@ public interface MyClient {
 
 	@GetMapping("/api/v1/customers")
 	List<CustomerResponse> findAll();
+	
+	
+	@GetMapping("/api/v1/customers/ports")
+	String  getPort();
+	
 }

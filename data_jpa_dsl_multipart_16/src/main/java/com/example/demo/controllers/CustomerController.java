@@ -37,6 +37,12 @@ public class CustomerController {
     private final Environment env;
 
     
+    @GetMapping(path =  "/ports")
+    public String portInfo() {
+    	
+    	String portNnumber = this.env.getProperty("local.server.port").toString();
+    	return portNnumber;
+    }
 	
 	@GetMapping
 	public ResponseEntity<List<Customer>> findAll(){

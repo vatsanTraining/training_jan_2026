@@ -34,7 +34,7 @@ public class InvoiceController {
 	}
 	
 	@GetMapping(path = "/{id}")
-	List<InvoiceDto> findById(@PathVariable("id") int id){
+	List<InvoiceDto> findById( int id){
 		
 		return this.service.findAll();
 	}

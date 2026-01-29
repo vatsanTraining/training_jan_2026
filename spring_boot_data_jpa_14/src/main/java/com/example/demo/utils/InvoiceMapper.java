@@ -11,7 +11,7 @@ import com.example.demo.entity.Invoice;
 @Mapper(componentModel = "spring" ,builder=@Builder(disableBuilder = true))
 public interface InvoiceMapper {
 
-	
+
 	@Mapping(target = "createDate", ignore = true)
 	@Mapping(target = "modifiedDate", ignore = true)
 	@Mapping(target = "createdBy", ignore = true)

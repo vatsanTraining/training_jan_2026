@@ -1,8 +1,8 @@
 spring:
   application:
-    name: spring_rest_api
+    name: invoice-service
   datasource:
-    url: jdbc:h2:file:~/trainDb   
+    url: jdbc:h2:file:~/invoiceDb   
     username: sa
     password: ''
     driver-class-name: org.h2.Driver
@@ -16,7 +16,7 @@ spring:
       path: /h2-console
 
 server:
-  port: 5050
+  port: 5020
 logging:
   level:
     org:
