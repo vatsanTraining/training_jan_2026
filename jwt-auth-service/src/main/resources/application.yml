@@ -1,0 +1,18 @@
+server:
+   port: 6050
+spring:
+  application:
+    name: jwt-auth-service
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+jwt:
+  secret: ${secret}
+  expiration: 300000
+
+logging:
+  level:
+    '[org.springframework.security]': trace

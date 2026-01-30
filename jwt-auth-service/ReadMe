@@ -1,0 +1,42 @@
+Create a Spring Boot Starter Project with the following modules:
+Add Spring Web ,actuator and Security dependencies.
+Add Eureka Client dependency.
+Add JWT dependency to pom.xml
+
+
+Add @EnableEurekaClient to  Spring Boot Application class 
+
+Create A DTO record AuthRequest  with fields username, password.
+
+Create a class JwtUtil with methods to generate JwtToken Inject the 
+secret key and expiration time with @Value annotation from application.properties file.
+Add One More Field jwt.security.key Key 
+Add init method with @PostConstruct annotation inititalze the key using HMAC-SHA algorithm.
+Use the following code to initialize the key:
+     this.key = Keys.hmacShaKeyFor(secret.getBytes());
+Create method generateToken with parameter AuthRequest and return type String.
+ Use Jwts.builder() to build the token with subject,issuedAt, expiration and signWith methods and compact it.
+
+ 
+Create a class SecurityConfig and Register AuthenticationManager,BcryptPasswordEncoder ,SecurityFilterChain,UserDetailsService as bean
+Add Appropriate Code to Register the bean
+Add appropriate security configurations to permit /auth/** endpoints 
+and secure other endpoints.
+Inmemory user details with username  and password password with  authority.
+
+Create a class AuthController with @RestController annotation.
+Expose a POST endpoint /auth/login which accepts AuthRequest as request body.
+Inject JwtUtil and AuthenticationManager using @Autowired annotation.
+In the login method authenticate the user using AuthenticationManager.
+If authentication is successful generate the token using JwtUtil and return it in ResponseEntity.
+
+Create application.properties file with following properties:
+server.port=8080
+eureka.client.service-url.defaultZone=http://localhost:8761/eureka/
+jwt.security.key=your_secret_key_here
+jwt.expiration.time=3600000
+spring.application.name=auth-service
+# Add actuator endpoint to monitor the application
+management.endpoints.web.exposure.include=*
+Test the application by sending a POST request to /auth/login endpoint with valid username and password.
+  

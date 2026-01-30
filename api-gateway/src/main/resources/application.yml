@@ -17,3 +17,6 @@ management:
       access: unrestricted
     health:
       show-details: always
+
+jwt:
+  secret: "${secret}"

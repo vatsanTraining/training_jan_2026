@@ -18,10 +18,12 @@ public class RouteConfig {
 		
 		
 		 return builder.routes()
+				   .route(p -> p.path("/api/v1/auth/**").uri("lb://JWT-AUTH-SERVICE"))
 		           .route(p -> p.path("/api/v1/customers/**")
 		        	.filters(f -> f.filter(custom) )	   
 		            .uri("lb://DATA-JPA-DSL-MULTIPART"))
-		            .route(p -> p.path("/api/v1/invoices/**").uri("lb://INVOICE-SERVICE"))
+		            .route(p -> p.path("/api/v1/invoices/**").filters(f->f.filter(custom))
+		            		.uri("lb://INVOICE-SERVICE"))
 	                .build();
 
 		
