@@ -58,7 +58,7 @@ public class FlightController {
 	    counter++;
 
 	    System.out.println("Attempt number: " + counter);
-	    if (counter <= 3) {
+	    if (counter <= 5) {
 	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
 	                             .body("Temporary Failure");
 	    }

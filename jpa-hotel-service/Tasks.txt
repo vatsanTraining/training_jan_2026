@@ -1,0 +1,64 @@
+Task -1
+
+1. Create a Spring Boot Project with Spring Web Depedency
+2. Create a Entity Class Hotel with few fields
+3. Expose a Rest Endpoint and Return a Simple Text
+4. Dockerize and run the application
+
+
+Task -2
+
+1. Add the mysql and jpa denepdency
+2. Make the Stdudent as a Entity
+3. Add the repos/services etc
+4. Expose endpoint with controllers
+5. Use Docker-compose to build the image
+6. Run the Applicaton
+
+
+Task3-
+1. Login to Azure portal
+2. Create Sql Server
+3. Create database
+4. Obtain the  JDBC connection URL
+
+Task-4
+1.Add the jpa datasource details 
+2. Execute the application 
+3. Invoke the Rest Endpoint from postman
+
+
+
+docker build --platform linux/amd64 -t vatsank/hotelservice:2.0 .
+
+Create Container registry with name vats2026
+az acr login --name vats2026
+
+docker tag vatsank/hotelservice:2.0 vats2026.azurecr.io/hotelservice:v1
+
+docker push vats2026.azurecr.io/hotelservice:v1
+
+az acr repository list --name vats2026 --output table
+
+az appservice plan create --name hotelservice-plan --resource-group myrg --sku B1 --is-linux --location southindia
+
+ACR_PASSWORD=$(az acr credential show --name vats2026 --query "passwords[0].value" -o tsv)
+
+# Update the Web App with the credentials
+az webapp config container set \
+  --name vats-hotelservice-app \
+  --resource-group myrg \
+  --docker-custom-image-name vats2026.azurecr.io/hotelservice:latest \
+  --docker-registry-server-url https://vats2026.azurecr.io \
+  --docker-registry-server-user vats2026 \
+  --docker-registry-server-password $ACR_PASSWORD
+
+
+
+az webapp log config --name vats-hotelservice-app --resource-group myrg --docker-container-logging filesystem
+
+az webapp log tail --name vats-hotelservice-app --resource-group myrg
+
+az webapp restart --name vats-hotelservice-app --resource-group myrg
+
+

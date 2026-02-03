@@ -9,9 +9,6 @@ import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 import reactor.util.retry.Retry;
 
-import java.time.Duration;
-import java.time.temporal.ChronoUnit;
-import java.util.concurrent.TimeUnit;
 
 @RestController
 public class ClientController {
@@ -49,6 +46,8 @@ public class ClientController {
 
     @GetMapping(path = "/client/info")
     public Mono<String> getMessage(){
+    	
+    	
 
         return this.circuitBreaker.run(
 
