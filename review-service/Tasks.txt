@@ -1,0 +1,25 @@
+Task -1
+
+1. Create a Spring Boot Project with Spring Web Depedency
+2. Create a Entity Class Hotel with few fields
+3. Expose a Rest Endpoint and Return a Simple Text
+4. Dockerize and run the application
+
+
+Task -2
+
+1. Add the mysql and jpa denepdency
+2. Make the Stdudent as a Entity
+3. Add the repos/services etc
+4. Expose endpoint with controllers
+5. Use Docker-compose to build the image
+6. Run the Applicaton
+
+
+docker build --platform linux/amd64 -t vatsank/reviewservice:2.0 .
+
+docker tag vatsank/reviewservice:2.0 vats2030.azurecr.io/samples/reviewservice
+
+
+docker push vats2030.azurecr.io/samples/reviewservice
+

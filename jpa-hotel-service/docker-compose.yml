@@ -23,7 +23,7 @@ services:
     build:
       context: ./
     ports:
-      - "3035:3035"
+      - "8080:8080"
     depends_on:
       db:
         condition: service_healthy

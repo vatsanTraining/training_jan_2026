@@ -1,0 +1,17 @@
+docker build --platform linux/amd64 -t vatsank/reviewservice:1.0 .
+
+Create Container registry with name vats2027
+
+docker login vats2027.azurecr.io --username vats2027
+
+az acr login --name vats2027
+
+docker tag vatsank/reviewservice:1.0 vats2027.azurecr.io/reviewservice:v1
+
+docker push vats2027.azurecr.io/reviewservice:v1
+
+az acr repository list --name vats2027 --output table
+
+
+
+

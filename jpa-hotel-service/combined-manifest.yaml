@@ -1,0 +1,149 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yml -o combined-manifest.yaml
+    kompose.version: 1.38.0 (HEAD)
+  labels:
+    io.kompose.service: db
+  name: db
+spec:
+  ports:
+    - name: "3307"
+      port: 3307
+      targetPort: 3306
+  selector:
+    io.kompose.service: db
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yml -o combined-manifest.yaml
+    kompose.version: 1.38.0 (HEAD)
+  labels:
+    io.kompose.service: myspringapp
+  name: myspringapp
+spec:
+  ports:
+    - name: "3035"
+      port: 3035
+      targetPort: 3035
+  selector:
+    io.kompose.service: myspringapp
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yml -o combined-manifest.yaml
+    kompose.version: 1.38.0 (HEAD)
+  labels:
+    io.kompose.service: db
+  name: db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: db
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml -o combined-manifest.yaml
+        kompose.version: 1.38.0 (HEAD)
+      labels:
+        io.kompose.service: db
+    spec:
+      containers:
+        - env:
+            - name: MYSQL_DATABASE
+              value: mydb
+            - name: MYSQL_PASSWORD
+              value: password
+            - name: MYSQL_ROOT_PASSWORD
+              value: password
+            - name: MYSQL_USER
+              value: user
+          image: mysql:8.4
+          livenessProbe:
+            exec:
+              command:
+                - mysqladmin
+                - ping
+                - -h
+                - localhost
+            failureThreshold: 5
+            periodSeconds: 10
+            timeoutSeconds: 5
+          name: db
+          ports:
+            - containerPort: 3306
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /var/lib/mysql
+              name: mysql-data
+      restartPolicy: Always
+      volumes:
+        - name: mysql-data
+          persistentVolumeClaim:
+            claimName: mysql-data
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  labels:
+    io.kompose.service: mysql-data
+  name: mysql-data
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Mi
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yml -o combined-manifest.yaml
+    kompose.version: 1.38.0 (HEAD)
+  labels:
+    io.kompose.service: myspringapp
+  name: myspringapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: myspringapp
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml -o combined-manifest.yaml
+        kompose.version: 1.38.0 (HEAD)
+      labels:
+        io.kompose.service: myspringapp
+    spec:
+      containers:
+        - env:
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: password
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:mysql://db:3306/mydb?allowPublicKeyRetrieval=true&useSSL=false
+            - name: SPRING_DATASOURCE_USERNAME
+              value: user
+            - name: SPRING_JPA_HIBERNATE_DDL_AUTO
+              value: update
+          image: vatsank/hotelapplication:1.0
+          name: myspringapp
+          ports:
+            - containerPort: 3035
+              protocol: TCP
+      restartPolicy: Always
+
