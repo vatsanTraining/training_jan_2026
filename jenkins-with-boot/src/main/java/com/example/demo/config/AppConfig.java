@@ -17,4 +17,13 @@ public class AppConfig {
 		
 		
 	}
+	
+	@Bean
+	Hotel drivein() {
+		
+		return new Hotel(2020, "woodland","Madurai", 600240);
+		
+		
+	}
+	
 }
