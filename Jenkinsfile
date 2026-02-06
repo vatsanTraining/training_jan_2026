@@ -33,7 +33,7 @@ pipeline {
         stage('Deploy Local') {
             steps {
                 script {
-                    sh "export PATH=\$PATH:/usr/local/bin && ${DOCKER_PATH} rm -f my-running-app || true"
+            echo "App is Built"
                 }
             }
         }
