@@ -7,11 +7,6 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                git 'https://github.com'
-            }
-        }
 
         stage('Maven Build') {
             steps {
