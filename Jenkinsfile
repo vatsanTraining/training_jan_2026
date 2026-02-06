@@ -34,7 +34,6 @@ pipeline {
             steps {
                 script {
                     sh "export PATH=\$PATH:/usr/local/bin && ${DOCKER_PATH} rm -f my-running-app || true"
-                    sh "export PATH=\$PATH:/usr/local/bin && ${DOCKER_PATH} run -d -p 8080:8080 --name my-running-app ${APP_NAME}:latest"
                 }
             }
         }
