@@ -33,4 +33,12 @@ public class AppConfig {
 		
 		
 	}
+	
+	@Bean
+	Hotel restaurant() {
+		
+		return new Hotel(4020, "Taj","Pondy", 600340);
+		
+		
+	}
 }
