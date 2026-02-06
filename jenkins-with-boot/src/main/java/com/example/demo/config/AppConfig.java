@@ -26,4 +26,11 @@ public class AppConfig {
 		
 	}
 	
+	@Bean
+	Hotel beachfront() {
+		
+		return new Hotel(3020, "nyle","Pondy", 600340);
+		
+		
+	}
 }
