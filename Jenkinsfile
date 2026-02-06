@@ -9,6 +9,9 @@ pipeline {
     stages {
 
         stage('Maven Build') {
+            tools {
+        maven 'M3_HOME' 
+    }
             steps {
                 dir('jenkins-with-boot') {
                     sh 'mvn clean install'
