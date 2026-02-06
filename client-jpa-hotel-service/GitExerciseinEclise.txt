@@ -1,0 +1,14 @@
+create a Java Project
+Create a Java Class
+Right click on the project 
+Select team 
+create repository with a name
+Commit the changes
+Team - Switchto - Branch develop01
+make some changes and commit 
+Team -switchto- main branch
+make some changes on the same line as developer 01 
+you can see merge conflict coming up
+accept the required change 
+and commit 
+

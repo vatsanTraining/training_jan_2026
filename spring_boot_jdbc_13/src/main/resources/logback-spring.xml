@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true">
+
+    <!-- Use the new class name to stop the WARN logs -->
+    <shutdownHook class="ch.qos.logback.core.hook.DefaultShutdownHook"/>
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="SPLUNK" class="com.splunk.logging.HttpEventCollectorLogbackAppender">
+        <!-- Use the base /services/collector path -->
+        <url>https://localhost:8088/services/collector</url>
+        <token>a66309b9-2e3e-4938-a47e-c544faea95bc</token>
+        <index>main</index>
+        <batch_size_count>1</batch_size_count>
+        
+        <source>spring-boot-app</source>
+        <sourcetype>_json</sourcetype>
+        <disableCertificateValidation>true</disableCertificateValidation>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%msg</pattern>
+        </layout>
+    </appender>
+
+    <!-- Root Logger: Ensure this is the ONLY root block -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="SPLUNK" />
+    </root>
+
+</configuration>
