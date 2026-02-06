@@ -23,9 +23,7 @@ pipeline {
             steps {
                 dir('jenkins-with-boot') {
                     script {
-    def app = docker.build("${APP_NAME}:${BUILD_NUMBER}")
-    app.push()           // Pushes with build number
-    app.push("latest")   // Also pushes with 'latest' tag
+    sh "export PATH=\$PATH:/usr/local/bin && ${DOCKER_PATH} build -t ${APP_NAME}:${BUILD_NUMBER} -t ${APP_NAME}:latest ."
 }
 
                 }
