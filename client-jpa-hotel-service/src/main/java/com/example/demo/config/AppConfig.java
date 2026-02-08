@@ -24,13 +24,6 @@ public class AppConfig {
 	}
 
 
-@Bean
-String name() {
-	
-	// Factory Method
-	return "Hello From chennai and pune-Updated";
-}
-
 
 
 
