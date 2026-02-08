@@ -22,10 +22,16 @@ public class AppConfig {
 		
 		return builder.build();
 	}
+
+
+@Bean
+String name() {
+	
+	// Factory Method
+	return "Hello From chennai and pune";
 }
 
-// Create a Controller 
-// Inject the webclient
-// invoke the jpa-hotel-service  rest endpoint
-// register this as a service with docker compose
-// test with postman
+
+
+
+}
