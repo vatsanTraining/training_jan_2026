@@ -1,7 +1,6 @@
 pipeline {
     agent any
     
-<<<<<<< HEAD
     environment {
         DOCKER_PATH = '/usr/local/bin/docker'
         APP_NAME = 'my-boot-app'
@@ -38,13 +37,7 @@ pipeline {
                 script {
                     sh "export PATH=\$PATH:/usr/local/bin && ${DOCKER_PATH} rm -f my-running-app || true"
                     sh "export PATH=\$PATH:/usr/local/bin && ${DOCKER_PATH} run -d -p 8080:8080 --name my-running-app ${APP_NAME}:latest"
-=======
-    // Triggers block added here
     triggers {
-        // Option A: Build every hour regardless of changes
-        // cron('H * * * *') 
-        
-        // Option B: Check GitHub every 5 mins; build ONLY if code changed
         pollSCM('H/5 * * * *')
     }
     
@@ -79,7 +72,6 @@ pipeline {
             steps {
                 script {
                     echo "App is Built and Tagged as ${APP_NAME}:latest"
->>>>>>> branch 'master' of https://github.com/vatsanTraining/training_jan_2026.git
                 }
             }
         }
