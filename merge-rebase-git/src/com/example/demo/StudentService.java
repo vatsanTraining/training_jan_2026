@@ -5,6 +5,7 @@ public class StudentService {
 	
 	public String  assignGrade(double mark) {
 		
+		System.out.println("First Line");
 		
 		return mark>80.00?"A":"B";
 	}
