@@ -1,12 +1,7 @@
 pipeline {
     agent any
     
-    // Triggers block added here
     triggers {
-        // Option A: Build every hour regardless of changes
-        // cron('H * * * *') 
-        
-        // Option B: Check GitHub every 5 mins; build ONLY if code changed
         pollSCM('H/5 * * * *')
     }
     
