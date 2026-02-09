@@ -11,4 +11,9 @@ public class StudentService {
 		
 		return mark>80.00?"A":"B";
 	}
+	
+	public int getMark() {
+		
+		return 60;
+	}
 }
